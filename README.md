@@ -8,13 +8,16 @@ Step-by-step guide for making HTTPS work in AWS Elastic Beanstalk single instanc
 1. Install [.Net Core 3.0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
 2. Clone the repository
-`git clone https://github.com/usix79/dotnet-core-eb-https.git`
+
+    `git clone https://github.com/usix79/dotnet-core-eb-https.git`
 
 3. Restore dotnet tools (fake-cli is used)
-`dotnet tool restore`
+
+    `dotnet tool restore`
 
 4. Run the application locally
-`dotnet fake build -t run`
+
+    `dotnet fake build -t run`
 
 5. Open in browser (usually [http://localhost:5000](http://localhost:5000))
 
@@ -57,7 +60,7 @@ If all goes well, you will see such response
     * Add an `AmazonS3ReadOnlyAccess` policy to the `aws-elasticbeanstalk-ec2-role` in IAM Management Console
 
 6. Create bundle and deploy
-    * In `https-instance-dotnet.config` asign propper values to `$bucket`, `$certkey` and `$pwdkey`
+    * In `https-instance-dotnet.config` assign propper values to `$bucket`, `$certkey` and `$pwdkey`
     * Create new bundle `dotnet fake build -t bundle`
     * Upload `dotnet-core-eb-https-bundle.zip` to the EB environment
 

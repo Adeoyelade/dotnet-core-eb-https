@@ -26,6 +26,7 @@ If all goes well, you will see such response
 ### Detailed information
 
 [Deploying an ASP.NET core application with Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/dotnet-core-tutorial.html)
+
 [Terminating HTTPS on Amazon EC2 instances running .NET](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/SSLNET.SingleInstance.html)
 
 ### Steps
@@ -37,12 +38,16 @@ If all goes well, you will see such response
     *At that point your environment is available by [Elastic Beanstalk environment's Domain name](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html)*
 
 2. [Route Traffic to the Elastic Beanstalk Environment](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-beanstalk-environment.html)
+
     *At that point your environment is available by your domain name, but only through http*
 
 3. Create SSL certificate
     * Use Let's Encript Cert Bot for [creating ssl certificate manually](https://certbot.eff.org/docs/using.html#manual)
+
         `sudo certbot certonly --manual --preferred-challenges dns`
+
     * Use OpenSSL for [creating pfx](https://www.ssl.com/how-to/create-a-pfx-p12-certificate-file-using-openssl/)
+
         `openssl pkcs12 -export -out cert.pfx -inkey privkey1.pem -in cert1.pem`
 
 4. Upload certificate file (pfx) and file with password to S3

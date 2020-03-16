@@ -40,8 +40,6 @@ Target.create "Bundle" (fun _ ->
     let publishArgs = sprintf "publish -c Release -o \"%s\"" deployDir
     runDotNet publishArgs serverPath
 
-    Shell.copyDir (Path.combine deployDir ".secrets") ".secrets" FileFilter.allFiles
-
     let bundleInputDir = Path.combine bundleDir "input"
     let bundleFile = Path.combine bundleDir "dotnet-core-eb-https-bundle.zip"
     Shell.mkdir bundleDir
@@ -49,7 +47,6 @@ Target.create "Bundle" (fun _ ->
     ZipFile.CreateFromDirectory (deployDir, (Path.combine bundleInputDir "dotnet-core-eb-https.zip"))
     Shell.copyFile bundleInputDir "aws-windows-deployment-manifest.json"
     Shell.copyDir (Path.combine bundleInputDir ".ebextensions") ".ebextensions" FileFilter.allFiles
-    Shell.copyDir bundleInputDir "setupscripts" FileFilter.allFiles
 
     Shell.rm bundleFile
     ZipFile.CreateFromDirectory (bundleInputDir, bundleFile)
@@ -60,6 +57,9 @@ open Fake.Core.TargetOperators
 "Clean"
     ==> "Build"
     ==> "Bundle"
+
+"Clean"
+    ==> "Build"
     ==> "Run"
 
 Target.runOrDefault "Build"

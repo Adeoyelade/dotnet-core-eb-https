@@ -70,5 +70,5 @@ If all goes well, you will see such response on https request to your domain
 ### If something goes wrong
 
 * Check logs from Elastic Beanstalk console
-* Connet to your environment's E2 instance using [RDP](https://docs.amazonaws.cn/en_us/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html) and explore `C:\cfn\log\cfn-init-cmd.log`
+* Connect to your environment's E2 instance using [RDP](https://docs.amazonaws.cn/en_us/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html) and explore `C:\cfn\log\cfn-init-cmd.log`
 * Try run `C:\certs\install-cert.ps1` manually on the E2 instance  

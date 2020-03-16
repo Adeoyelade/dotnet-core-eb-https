@@ -1,0 +1,15 @@
+{
+    "manifestVersion": 1,
+    "deployments": {
+        "aspNetCoreWeb": [
+        {
+            "name": "dotnet-core-eb-https",
+            "parameters": {
+                "appBundle": "dotnet-core-eb-https.zip",
+                "iisPath": "/",
+                "iisWebSite": "Default Web Site"
+            }            
+        }
+        ]
+    }
+}

@@ -1,0 +1,8 @@
+.ionide/
+.vscode/
+.fake/
+obj/
+bin/
+deploy/
+bundle/
+Properties/
